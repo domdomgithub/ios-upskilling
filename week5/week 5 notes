@@ -1,0 +1,26 @@
+UML RELATIONS
+child -|> parent
+
+association
+A-B
+
+multiplicity (1to1, 1toM, etc)
+
+navigatability (one way)
+A->B
+
+aggregation
+part of another object "has a"
+course -<> instructor
+
+composition "part of"
+chasis-<*>car
+
+realization (implement behaviour)
+implementer ---|> interface
+
+dependency (weak relations)
+road ----> car
+
+
+
