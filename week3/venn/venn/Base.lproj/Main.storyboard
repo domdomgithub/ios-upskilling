@@ -56,21 +56,38 @@
                                     <constraint firstAttribute="bottom" secondItem="G3H-Nz-PTh" secondAttribute="bottom" constant="20" id="oIC-25-9Ab"/>
                                     <constraint firstAttribute="bottom" secondItem="Xui-ez-yT5" secondAttribute="bottom" constant="20" id="xGz-ls-A5z"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="leftCircleBottomConstraint" destination="xGz-ls-A5z" id="vWJ-sR-0IW"/>
+                                    <outlet property="leftCircleLeadingConstraint" destination="l18-Jk-192" id="8ll-Rs-cx5"/>
+                                    <outlet property="leftCircleTopConstraint" destination="LTn-zp-RMx" id="4ci-k9-XNV"/>
+                                    <outlet property="rightCircleBottomConstraint" destination="oIC-25-9Ab" id="Kso-Zp-wgt"/>
+                                    <outlet property="rightCircleTopConstraint" destination="d5P-jR-Agc" id="zYU-3o-jFE"/>
+                                    <outlet property="rightCircleTrailingConstraint" destination="7jX-mQ-4gW" id="dis-BA-j8Y"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijZ-4K-872">
                                 <rect key="frame" x="377" y="974" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Center"/>
+                                <connections>
+                                    <action selector="balancedTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dvh-cS-EI1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZN-Z3-raY">
                                 <rect key="frame" x="170" y="974" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Left"/>
+                                <connections>
+                                    <action selector="leftTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKI-zK-Of9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3z-2P-99m">
                                 <rect key="frame" x="600" y="974" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Right"/>
+                                <connections>
+                                    <action selector="rightTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Azh-vq-Zrn"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -22,17 +22,17 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func leftClick(sender: UIButton){
-        self.vennDiagram.weight = VennWeight.Left
+    @IBAction func leftTapped(_ sender: UIButton){
+        self.vennDiagram.weight = VennWeight.left
     }
     
-    @IBAction func balanceClick(sender: UIButton) {
-        self.vennDiagram.weight = VennWeight.Balanced
+    @IBAction func balancedTapped(_ sender: UIButton) {
+        self.vennDiagram.weight = VennWeight.balanced
     }
     
     
-    @IBAction func rightClick(sender: UIButton) {
-        self.vennDiagram.weight = VennWeight.Right
+    @IBAction func rightTapped(_ sender: UIButton) {
+        self.vennDiagram.weight = VennWeight.right
     }
 
 
