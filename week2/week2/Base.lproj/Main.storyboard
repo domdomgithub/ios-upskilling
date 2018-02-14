@@ -56,6 +56,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strawberries" translatesAutoresizingMaskIntoConstraints="NO" id="9qj-kq-IDR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mxe-dM-8nc">
                                 <rect key="frame" x="16" y="130" width="343" height="30"/>
                                 <constraints>
@@ -100,9 +103,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZiO-wf-pRY">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZiO-wf-pRY">
                                 <rect key="frame" x="169" y="329" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ESZ-8p-ITa">
                                 <rect key="frame" x="16" y="168" width="343" height="359"/>
@@ -114,19 +116,26 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="width" secondItem="g35-pb-ogF" secondAttribute="width" id="1aR-jl-1KG"/>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="leading" secondItem="31W-gH-MWK" secondAttribute="leading" id="4v7-A7-NZg"/>
                             <constraint firstItem="Mxe-dM-8nc" firstAttribute="leading" secondItem="31W-gH-MWK" secondAttribute="leading" constant="16" id="Amz-jP-c9n"/>
                             <constraint firstItem="lge-qG-go2" firstAttribute="top" secondItem="Nbt-BE-wcf" secondAttribute="bottom" constant="8" id="EIz-JC-sBs"/>
                             <constraint firstItem="lge-qG-go2" firstAttribute="leading" secondItem="31W-gH-MWK" secondAttribute="leading" constant="20" id="H0o-rq-oPI"/>
                             <constraint firstItem="y2r-mj-Stu" firstAttribute="leading" secondItem="31W-gH-MWK" secondAttribute="leading" constant="16" id="Iti-VL-NwV"/>
                             <constraint firstItem="31W-gH-MWK" firstAttribute="bottom" secondItem="lge-qG-go2" secondAttribute="bottom" constant="20" id="KqG-e3-Ibm"/>
                             <constraint firstItem="y2r-mj-Stu" firstAttribute="top" secondItem="31W-gH-MWK" secondAttribute="top" constant="26" id="OeR-XJ-XfF"/>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="top" secondItem="31W-gH-MWK" secondAttribute="top" id="S3o-7c-Rbe"/>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="bottom" secondItem="31W-gH-MWK" secondAttribute="bottom" id="U0X-it-j0c"/>
                             <constraint firstItem="Nbt-BE-wcf" firstAttribute="leading" secondItem="31W-gH-MWK" secondAttribute="leading" constant="20" id="Vq0-yN-V3H"/>
                             <constraint firstItem="31W-gH-MWK" firstAttribute="trailing" secondItem="lge-qG-go2" secondAttribute="trailing" constant="20" id="WuH-Vq-K0b"/>
                             <constraint firstItem="Mxe-dM-8nc" firstAttribute="top" secondItem="y2r-mj-Stu" secondAttribute="bottom" constant="19" id="YNF-0L-1uX"/>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="trailing" secondItem="31W-gH-MWK" secondAttribute="trailing" id="cYl-SS-rld"/>
                             <constraint firstItem="Nbt-BE-wcf" firstAttribute="top" secondItem="ESZ-8p-ITa" secondAttribute="bottom" constant="28" id="gPd-5U-q1Z"/>
                             <constraint firstItem="ESZ-8p-ITa" firstAttribute="centerX" secondItem="31W-gH-MWK" secondAttribute="centerX" id="ggJ-of-iej"/>
                             <constraint firstItem="ESZ-8p-ITa" firstAttribute="top" secondItem="Mxe-dM-8nc" secondAttribute="bottom" constant="8" id="hsd-Zm-R54"/>
                             <constraint firstItem="Nbt-BE-wcf" firstAttribute="centerX" secondItem="31W-gH-MWK" secondAttribute="centerX" id="m8B-Nz-wMn"/>
+                            <constraint firstItem="ZiO-wf-pRY" firstAttribute="centerY" secondItem="ESZ-8p-ITa" secondAttribute="centerY" id="nXt-9k-DJC"/>
+                            <constraint firstItem="9qj-kq-IDR" firstAttribute="centerX" secondItem="ZiO-wf-pRY" secondAttribute="centerX" id="r6Z-rS-e1f"/>
                             <constraint firstItem="ESZ-8p-ITa" firstAttribute="width" secondItem="Mxe-dM-8nc" secondAttribute="width" id="uaa-yH-ORN"/>
                             <constraint firstItem="31W-gH-MWK" firstAttribute="trailing" secondItem="y2r-mj-Stu" secondAttribute="trailing" constant="16" id="ude-lo-a1E"/>
                             <constraint firstItem="y2r-mj-Stu" firstAttribute="top" secondItem="31W-gH-MWK" secondAttribute="top" constant="26" id="yVB-VW-x4C"/>
@@ -161,6 +170,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="honeycomb" translatesAutoresizingMaskIntoConstraints="NO" id="duc-Uz-s23">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KDm-M9-t2s">
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -173,8 +185,13 @@
                         <constraints>
                             <constraint firstItem="KDm-M9-t2s" firstAttribute="top" secondItem="Cla-vS-d3g" secondAttribute="top" constant="16" id="Ado-Sf-kHX"/>
                             <constraint firstItem="KDm-M9-t2s" firstAttribute="leading" secondItem="Cla-vS-d3g" secondAttribute="leading" constant="16" id="BLd-Rw-4GN"/>
+                            <constraint firstItem="duc-Uz-s23" firstAttribute="bottom" secondItem="Cla-vS-d3g" secondAttribute="bottom" id="EjW-f3-Fwl"/>
+                            <constraint firstItem="duc-Uz-s23" firstAttribute="trailing" secondItem="Cla-vS-d3g" secondAttribute="trailing" id="ILN-k6-m1k"/>
                             <constraint firstItem="Cla-vS-d3g" firstAttribute="trailing" secondItem="KDm-M9-t2s" secondAttribute="trailing" constant="16" id="LcO-4M-5Ar"/>
+                            <constraint firstItem="duc-Uz-s23" firstAttribute="width" secondItem="DBA-le-wxJ" secondAttribute="width" id="WBw-UC-ge4"/>
+                            <constraint firstItem="duc-Uz-s23" firstAttribute="leading" secondItem="Cla-vS-d3g" secondAttribute="leading" id="eff-TI-HPb"/>
                             <constraint firstItem="Cla-vS-d3g" firstAttribute="bottom" secondItem="KDm-M9-t2s" secondAttribute="bottom" constant="16" id="f8c-3C-cDG"/>
+                            <constraint firstItem="duc-Uz-s23" firstAttribute="top" secondItem="Cla-vS-d3g" secondAttribute="top" id="fLr-bN-HdD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cla-vS-d3g"/>
                     </view>
@@ -205,4 +222,8 @@
             <point key="canvasLocation" x="-553" y="30"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="honeycomb" width="750" height="1334"/>
+        <image name="strawberries" width="750" height="1334"/>
+    </resources>
 </document>

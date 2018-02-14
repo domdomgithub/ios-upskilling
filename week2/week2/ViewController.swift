@@ -16,6 +16,9 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        tableView.rowHeight = 70
+        tableView.backgroundView = UIImageView(image: UIImage(named: "breads"))
+        
         NSUserDefaultsManager.initDefaults()
     }
     
@@ -40,6 +43,13 @@ class ViewController: UITableViewController {
         
         cell.textLabel?.text = recipe.title
         cell.recipe = recipe
+        
+        if(indexPath.item % 2 == 0) {
+            cell.backgroundColor = UIColor.clear
+        } else {
+            cell.backgroundColor = UIColor.white.withAlphaComponent(0.2)
+            cell.textLabel?.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        }
         
         return cell
     }
