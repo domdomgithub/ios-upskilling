@@ -28,9 +28,48 @@ class week2UITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testAddRecipe() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        
+        let app = XCUIApplication()
+        let recipesNavigationBar = app.navigationBars["Recipes"]
+        recipesNavigationBar.buttons["Add"].tap()
+        
+        let element = app.otherElements.containing(.navigationBar, identifier:"Title").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let textField = element.children(matching: .textField).element
+        textField.tap()
+        textField.typeText("test Recipe")
+        
+        let textView = element.children(matching: .textView).element
+        textView.tap()
+        textView.tap()
+        textView.typeText("test recipe entry")
+        app.buttons["Add"].tap()
+        
+        
+    }
+    
+    func testDeleteRecipe() {
+        let app = XCUIApplication()
+        app.navigationBars["Recipes"].buttons["Add"].tap()
+        
+        let element = app.otherElements.containing(.navigationBar, identifier:"Title").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let textField = element.children(matching: .textField).element
+        textField.tap()
+        textField.typeText("start test delete recipe")
+        
+        let textView = element.children(matching: .textView).element
+        textView.tap()
+        textView.tap()
+        textView.typeText("delete me")
+        app.buttons["Add"].tap()
+        app.navigationBars["Title"].buttons["Recipes"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Start Test Delete Recipe"]/*[[".cells.staticTexts[\"Start Test Delete Recipe\"]",".staticTexts[\"Start Test Delete Recipe\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        tablesQuery.buttons["Delete"].tap()
     }
     
 }

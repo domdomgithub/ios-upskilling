@@ -58,6 +58,8 @@ class ViewController: UITableViewController {
         if(editingStyle == .delete) {
             RecipeManager.deleteRecipe(id: indexPath.item)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            NSUserDefaultsManager.synchronize()
         }
     }
     
