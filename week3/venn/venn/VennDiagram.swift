@@ -32,20 +32,17 @@ class VennDiagram: UIView {
         }
     }
     
-//    override func awakeFromNib() {
-//        let view = UIView()
-//        view.frame = self.bounds
-//        view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
-//        view.layer.cornerRadius = 12.0
-//        view.autoresizingMask = [
-//            UIViewAutoresizing.flexibleWidth,
-//            UIViewAutoresizing.flexibleHeight
-//        ]
-//
-//        //        view.translatesAutoresizingMaskIntoConstraints = true
-//
-//        self.insertSubview(view, at: 0)
-//    }
+/*
+     rendering pipeline:
+ updateContraints() -> layoutSubviews() (top down) -> drawRect() (custom rendering)
+     
+     setNeedsUpdateConstraints()
+     updateConstraintsIfNeeded()
+     
+     setNeedsLayout() <- will call update constraints i needed
+     layoutIfNeeded()
+     
+ */
     
     override func updateConstraints() {
         switch self.weight {
