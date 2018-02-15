@@ -52,24 +52,26 @@ class week2UITests: XCTestCase {
     }
     
     func testDeleteRecipe() {
+        
         let app = XCUIApplication()
         app.navigationBars["Recipes"].buttons["Add"].tap()
         
         let element = app.otherElements.containing(.navigationBar, identifier:"Title").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
         let textField = element.children(matching: .textField).element
         textField.tap()
-        textField.typeText("start test delete recipe")
+        textField.typeText("Delete Me")
         
         let textView = element.children(matching: .textView).element
         textView.tap()
         textView.tap()
-        textView.typeText("delete me")
+        textView.typeText("to be deleted...")
         app.buttons["Add"].tap()
         app.navigationBars["Title"].buttons["Recipes"].tap()
         
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Start Test Delete Recipe"]/*[[".cells.staticTexts[\"Start Test Delete Recipe\"]",".staticTexts[\"Start Test Delete Recipe\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Delete Me"]/*[[".cells.staticTexts[\"Delete Me\"]",".staticTexts[\"Delete Me\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
         tablesQuery.buttons["Delete"].tap()
+        
     }
     
 }

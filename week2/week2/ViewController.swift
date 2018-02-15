@@ -41,7 +41,7 @@ class ViewController: UITableViewController {
         
         let recipe = RecipeManager.recipes[indexPath.item]
         
-        cell.textLabel?.text = recipe.title
+        cell.textLabel?.text = recipe.title?.capitalized
         cell.recipe = recipe
         
         if(indexPath.item % 2 == 0) {
