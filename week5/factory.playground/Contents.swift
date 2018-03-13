@@ -37,6 +37,10 @@ struct BlackboardPalette: ColorPalette {
 
 let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 800, height: 44)))
 
+
+
+
+
 let whiteboard = WhiteboardPalette()
 label.backgroundColor = whiteboard.bgColor
 label.textColor = whiteboard.textColor
@@ -51,11 +55,31 @@ label.text = "blackboard"
 
 
 
+
+
+
+
+
+
+
+///////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+// factory base
 public enum ColorTheme {
     case whiteboard
     case blackboard
 }
 
+// concrete factory
 public class PaletteFactory {
     public class func makePalette(theme: ColorTheme) -> ColorPalette {
         switch(theme) {
@@ -64,15 +88,22 @@ public class PaletteFactory {
         case .blackboard:
             return BlackboardPalette()
         }
+        // case ...
     }
 }
 
 
 
-let factoryWhiteboard = PaletteFactory.makePalette(theme: .whiteboard)
 
 
 
+
+// client
+let product = PaletteFactory.makePalette(theme: .whiteboard)
+//let product = PaletteFactory.makePalette(theme: .blackboard)
+label.backgroundColor = product.bgColor
+label.textColor = product.textColor
+label.text = "factory board"
 
 
 

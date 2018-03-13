@@ -9,8 +9,11 @@ var contactPrototype = Contact(firstName: "Dom", lastName: "Lynn")
 
 var contactCopy = contactPrototype
 
-print(MemoryUtil.address(&contactPrototype))
-print(MemoryUtil.address(&contactCopy))
+print(MemoryUtil.address(&contactPrototype.firstName))
+print(MemoryUtil.address(&contactCopy.firstName))
+
+print(contactCopy.firstName)
+print(contactPrototype.firstName)
 
 
 extension Contact: Equatable {

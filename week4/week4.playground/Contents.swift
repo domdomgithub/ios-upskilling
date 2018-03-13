@@ -97,20 +97,27 @@ func mangleName (name: String) throws -> String {
 
 
 do {
-    try mangleName("")
+    try mangleName(name: "")
+    // ...
     // ...
 } catch CustomError.Empty {
     
-} catch CustomError.TooShort(let _) {
+} catch CustomError.TooShort( _) {
     
 }
 
-// return nil if error
-let a = try? mangleName("")
 
-// DODGY
-// ignore error propagation
-let b = try! mangleName("")
+
+// return nil if error
+let a = try? mangleName(name: "")
+
+
+func aaaa() {
+    // DODGY
+    // ignore error propagation
+    let _ = try! mangleName(name: "")
+}
+
 
 
 

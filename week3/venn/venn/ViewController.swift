@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+//    @IBOutlet weak var vennDiagram: VennDiagram?
     @IBOutlet weak var vennDiagram: VennDiagram!
 
     override func viewDidLoad() {
@@ -23,6 +24,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func leftTapped(_ sender: UIButton){
+//        if let v = self.vennDiagram {
+//            v.weight = VennWeight.left
+//        }
         self.vennDiagram.weight = VennWeight.left
     }
     

@@ -2,20 +2,20 @@
 
 import UIKit
 
-
+// MARK: - Finish (factory pattern)
+// abstract product
 public protocol Finish: CustomStringConvertible {
     var color: UIColor {get}
     var price: Float {get}
     var description: String {get}
 }
-
-// MARK: - Finish
+// concrete product
 public struct WhiteFinish: Finish {
     public var color = UIColor.white
     public var price = Float(300)
     public var description: String = "\n\tFinish: White"
 }
-
+// concrete product
 public struct BlackFinish: Finish {
     public var color = UIColor.black
     public var price = Float(350)
@@ -23,7 +23,8 @@ public struct BlackFinish: Finish {
 }
 
 
-// MARK: - Storage
+// MARK: - Storage (builder pattern)
+// product
 public enum StorageType: String, CustomStringConvertible {
     case ssd = "ssd"
     case hdd = "hdd"
@@ -31,7 +32,7 @@ public enum StorageType: String, CustomStringConvertible {
         return self.rawValue
     }
 }
-
+// product
 public enum StorageSize: String, CustomStringConvertible {
     case small = "256GB"
     case large = "1TB"
@@ -40,6 +41,7 @@ public enum StorageSize: String, CustomStringConvertible {
     }
 }
 
+// builder
 public protocol Storage: CustomStringConvertible {
     var type: StorageType {get}
     var size: StorageSize {get}
@@ -47,6 +49,14 @@ public protocol Storage: CustomStringConvertible {
 }
 
 
+
+
+
+
+
+
+
+// concrete product
 public struct SmallFlash: Storage {
     public var type = StorageType.ssd
     public var size = StorageSize.small
@@ -58,7 +68,7 @@ public struct SmallFlash: Storage {
     
     public init(){}
 }
-
+// concrete product
 public struct MediumFlash: Storage {
     public var type = StorageType.ssd
     public var size = StorageSize.large
@@ -73,7 +83,7 @@ public struct MediumFlash: Storage {
 
 
 
-// MARK: - CPU
+// MARK: - CPU (builder pattern)
 public enum CPUType: String {
     case dualCore = "dual core"
     case quadCore = "quad core"
@@ -115,7 +125,7 @@ public struct CrazyCPU: CPU {
 
 
 
-// MARK: - RAM
+// MARK: - RAM (builder pattern)
 public protocol RAM: CustomStringConvertible {
     var size: RAMSize {get}
     var freq: RAMFreq {get}
@@ -132,7 +142,7 @@ public enum RAMFreq: String {
     case fast = "2400MHz"
 }
 
-public struct basicRAM: RAM {
+public struct BasicRAM: RAM {
     public var size = RAMSize.basic
     public var freq = RAMFreq.slow
     public var price = Float(150)
@@ -142,7 +152,7 @@ public struct basicRAM: RAM {
     }
 }
 
-public struct proRAM: RAM {
+public struct ProRAM: RAM {
     public var size = RAMSize.pro
     public var freq = RAMFreq.fast
     public var price = Float(300)
@@ -155,9 +165,7 @@ public struct proRAM: RAM {
 
 
 
-
-// MARK: - Computer
-
+// MARK: - Computer (non abstract factory)
 struct Computer: CustomStringConvertible {
     public var finish: Finish
     public var storage: Storage
@@ -175,11 +183,101 @@ struct Computer: CustomStringConvertible {
     }
 }
 
-
-let computer1 = Computer(finish: WhiteFinish(), storage: SmallFlash(), cpu: NormalCPU(), ram: basicRAM())
-let computer2 = Computer(finish: BlackFinish(), storage: MediumFlash(), cpu: CrazyCPU(), ram: proRAM())
+let computer1 = Computer(finish: WhiteFinish(), storage: SmallFlash(), cpu: NormalCPU(), ram: BasicRAM())
+let computer2 = Computer(finish: BlackFinish(), storage: MediumFlash(), cpu: CrazyCPU(), ram: ProRAM())
 
 
 print(computer1)
 print(computer2)
+
+
+
+
+
+
+
+//////////////////////////
+
+// MARK: - abstract factory for computer
+
+public enum ComputerType {
+    case basic
+    case extreme
+}
+
+
+// abstract factory
+public class ComputerFactory {
+    public func makeFinish() -> Finish? { return nil }
+    
+    public func makeStorage() -> Storage? { return nil }
+    
+    public func makeCpu() -> CPU? { return nil }
+    
+    public func makeRam() -> RAM? { return nil }
+    
+    public final class func makeFactory(type: ComputerType) -> ComputerFactory {
+        var factory: ComputerFactory
+        
+        switch(type) {
+        case .basic: factory = BasicComputerFactory()
+        case .extreme: factory = ExtremeComputerFactory()
+        }
+        
+        return factory
+    }
+}
+
+
+// concrete factories
+class BasicComputerFactory: ComputerFactory {
+    override func makeFinish() -> Finish? {
+        return WhiteFinish()
+    }
+    
+    override func makeStorage() -> Storage? {
+        return SmallFlash()
+    }
+    
+    override func makeCpu() -> CPU? {
+        return NormalCPU()
+    }
+    
+    override func makeRam() -> RAM? {
+        return BasicRAM()
+    }
+}
+
+class ExtremeComputerFactory: ComputerFactory {
+    override func makeFinish() -> Finish? {
+        return BlackFinish()
+    }
+    
+    override func makeStorage() -> Storage? {
+        return MediumFlash()
+    }
+    
+    override func makeCpu() -> CPU? {
+        return CrazyCPU()
+    }
+    
+    override func makeRam() -> RAM? {
+        return ProRAM()
+    }
+}
+
+
+let basicComputerFactory = ComputerFactory.makeFactory(type: .basic)
+let extremeComputerFactory = ComputerFactory.makeFactory(type: .extreme)
+
+if let finish = basicComputerFactory.makeFinish(),
+let storage = basicComputerFactory.makeStorage(),
+let cpu = basicComputerFactory.makeCpu(),
+let memory = basicComputerFactory.makeRam() {
+    // concrete product
+    let concreteProduct = Computer(finish: finish, storage: storage, cpu: cpu, ram: memory)
+    print(concreteProduct)
+}
+
+
 

@@ -38,9 +38,6 @@ public class Theme {
 
 
 var defaultTheme = Theme(bgColor: UIColor.white, textColor: UIColor.black, font: UIFont.systemFont(ofSize: 15))
-
-
-
 let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 800, height: 44)))
 label.backgroundColor = defaultTheme.bgColor
 label.textColor = defaultTheme.textColor
