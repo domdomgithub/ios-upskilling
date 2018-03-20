@@ -25,14 +25,16 @@ class week2UITests: XCTestCase {
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
+        if ProcessInfo.processInfo.arguments.contains("UI-Testing") {
+            UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        }
         super.tearDown()
     }
     
     func testAddRecipe() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        
+        // given
         let app = XCUIApplication()
         let recipesNavigationBar = app.navigationBars["Recipes"]
         recipesNavigationBar.buttons["Add"].tap()
@@ -42,24 +44,22 @@ class week2UITests: XCTestCase {
         textField.tap()
         textField.typeText("test Recipe")
         
+        // when
+        let beforeCount = app.tables.count
         let textView = element.children(matching: .textView).element
         textView.tap()
         textView.tap()
         textView.typeText("test recipe entry")
         app.buttons["Add"].tap()
         
+        // then
+        XCTAssertEqual(beforeCount, app.tables.count-1)
         
-        let tablesQuery = app.tables
-        if let recipe = tablesQuery.staticTexts["test Recipe"] {
-            // passed
-        }
-        else {
-            XCTFail("lol you suck")
-        }
     }
     
     func testDeleteRecipe() {
         
+        // given
         let app = XCUIApplication()
         app.navigationBars["Recipes"].buttons["Add"].tap()
         
@@ -75,16 +75,14 @@ class week2UITests: XCTestCase {
         app.buttons["Add"].tap()
         app.navigationBars["Title"].buttons["Recipes"].tap()
         
+        // when
+        let beforeCount = app.tables.count
         let tablesQuery = app.tables
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Delete Me"]/*[[".cells.staticTexts[\"Delete Me\"]",".staticTexts[\"Delete Me\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
         tablesQuery.buttons["Delete"].tap()
         
         // then
-        let tablesQuery = app.tables
-        if let recipe = tablesQuery.staticTexts["test Recipe"] {
-            // failed
-        }
-        // passed
+        XCTAssertEqual(beforeCount, app.tables.count+1)
         
     }
     
